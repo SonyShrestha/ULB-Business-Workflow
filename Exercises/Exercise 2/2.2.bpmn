@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="14.0.0">
+  <process id="Process_1" isExecutable="false">
+    <startEvent id="StartEvent_1y45yut" name="Car accident reported">
+      <outgoing>Flow_1ogo9hu</outgoing>
+    </startEvent>
+    <endEvent id="Event_145fig5" name="Claim lodged">
+      <incoming>Flow_18o5sv0</incoming>
+    </endEvent>
+    <task id="Activity_0ib76ty" name="Receive statement from witness">
+      <incoming>Flow_1ogo9hu</incoming>
+      <outgoing>Flow_1ynd1xv</outgoing>
+      <multiInstanceLoopCharacteristics />
+    </task>
+    <sequenceFlow id="Flow_1ogo9hu" sourceRef="StartEvent_1y45yut" targetRef="Activity_0ib76ty" />
+    <task id="Activity_0whlp9e" name="Lodge Claim">
+      <incoming>Flow_1ynd1xv</incoming>
+      <outgoing>Flow_18o5sv0</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1ynd1xv" sourceRef="Activity_0ib76ty" targetRef="Activity_0whlp9e" />
+    <sequenceFlow id="Flow_18o5sv0" sourceRef="Activity_0whlp9e" targetRef="Event_145fig5" />
+    <textAnnotation id="TextAnnotation_1ax07dv">
+      <text>Until two statements are received</text>
+    </textAnnotation>
+    <association id="Association_0h0ql5r" sourceRef="Activity_0ib76ty" targetRef="TextAnnotation_1ax07dv" />
+  </process>
+  <bpmndi:BPMNDiagram id="BpmnDiagram_1">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="StartEvent_1y45yut_di" bpmnElement="StartEvent_1y45yut">
+        <omgdc:Bounds x="172" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="160" y="185" width="63" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ib76ty_di" bpmnElement="Activity_0ib76ty">
+        <omgdc:Bounds x="280" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1ax07dv_di" bpmnElement="TextAnnotation_1ax07dv">
+        <omgdc:Bounds x="380" y="40" width="208" height="30" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0whlp9e_di" bpmnElement="Activity_0whlp9e">
+        <omgdc:Bounds x="480" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_145fig5_di" bpmnElement="Event_145fig5">
+        <omgdc:Bounds x="682" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="668" y="185" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ogo9hu_di" bpmnElement="Flow_1ogo9hu">
+        <omgdi:waypoint x="208" y="160" />
+        <omgdi:waypoint x="280" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0h0ql5r_di" bpmnElement="Association_0h0ql5r">
+        <omgdi:waypoint x="368" y="120" />
+        <omgdi:waypoint x="416" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ynd1xv_di" bpmnElement="Flow_1ynd1xv">
+        <omgdi:waypoint x="380" y="160" />
+        <omgdi:waypoint x="480" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18o5sv0_di" bpmnElement="Flow_18o5sv0">
+        <omgdi:waypoint x="580" y="160" />
+        <omgdi:waypoint x="682" y="160" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

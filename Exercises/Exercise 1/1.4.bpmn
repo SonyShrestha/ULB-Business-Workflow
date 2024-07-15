@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="14.0.0">
+  <process id="Process_1w280cg">
+    <startEvent id="Event_1plp1xt" name="Claim Received">
+      <outgoing>Flow_1xd5w53</outgoing>
+    </startEvent>
+    <task id="Activity_15xr3lc" name="Register Claim">
+      <incoming>Flow_1xd5w53</incoming>
+      <outgoing>Flow_05enues</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1xd5w53" sourceRef="Event_1plp1xt" targetRef="Activity_15xr3lc" />
+    <task id="Activity_1yu2zbg" name="Classify Claim">
+      <incoming>Flow_05enues</incoming>
+      <outgoing>Flow_0bwbw3p</outgoing>
+    </task>
+    <sequenceFlow id="Flow_05enues" sourceRef="Activity_15xr3lc" targetRef="Activity_1yu2zbg" />
+    <sequenceFlow id="Flow_0bwbw3p" sourceRef="Activity_1yu2zbg" targetRef="Gateway_0wg3jnq" />
+    <task id="Activity_0jl4i3h" name="Check Policy">
+      <incoming>Flow_1awqpgn</incoming>
+      <outgoing>Flow_031butv</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1awqpgn" name="always" sourceRef="Gateway_0wg3jnq" targetRef="Activity_0jl4i3h" />
+    <task id="Activity_13827xm" name="Check Damage">
+      <incoming>Flow_00qpkl2</incoming>
+      <outgoing>Flow_1xucn2c</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1xucn2c" sourceRef="Activity_13827xm" targetRef="Gateway_1lidlue" />
+    <sequenceFlow id="Flow_031butv" sourceRef="Activity_0jl4i3h" targetRef="Gateway_1lidlue" />
+    <endEvent id="Event_06peeb3" name="Claim Checked">
+      <incoming>Flow_095pd33</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_095pd33" sourceRef="Gateway_1lidlue" targetRef="Event_06peeb3" />
+    <inclusiveGateway id="Gateway_0wg3jnq">
+      <incoming>Flow_0bwbw3p</incoming>
+      <outgoing>Flow_1awqpgn</outgoing>
+      <outgoing>Flow_00qpkl2</outgoing>
+    </inclusiveGateway>
+    <sequenceFlow id="Flow_00qpkl2" name="complex" sourceRef="Gateway_0wg3jnq" targetRef="Activity_13827xm" />
+    <inclusiveGateway id="Gateway_1lidlue">
+      <incoming>Flow_031butv</incoming>
+      <incoming>Flow_1xucn2c</incoming>
+      <outgoing>Flow_095pd33</outgoing>
+    </inclusiveGateway>
+  </process>
+  <bpmndi:BPMNDiagram id="BpmnDiagram_1">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_1w280cg">
+      <bpmndi:BPMNShape id="Event_1plp1xt_di" bpmnElement="Event_1plp1xt">
+        <omgdc:Bounds x="182" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="161" y="145" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15xr3lc_di" bpmnElement="Activity_15xr3lc">
+        <omgdc:Bounds x="270" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yu2zbg_di" bpmnElement="Activity_1yu2zbg">
+        <omgdc:Bounds x="430" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jl4i3h_di" bpmnElement="Activity_0jl4i3h">
+        <omgdc:Bounds x="750" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_06peeb3_di" bpmnElement="Event_06peeb3">
+        <omgdc:Bounds x="1042" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1023" y="145" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1i63uih_di" bpmnElement="Gateway_0wg3jnq">
+        <omgdc:Bounds x="595" y="95" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13827xm_di" bpmnElement="Activity_13827xm">
+        <omgdc:Bounds x="750" y="190" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_009zqye_di" bpmnElement="Gateway_1lidlue">
+        <omgdc:Bounds x="925" y="95" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xd5w53_di" bpmnElement="Flow_1xd5w53">
+        <omgdi:waypoint x="218" y="120" />
+        <omgdi:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05enues_di" bpmnElement="Flow_05enues">
+        <omgdi:waypoint x="370" y="120" />
+        <omgdi:waypoint x="430" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bwbw3p_di" bpmnElement="Flow_0bwbw3p">
+        <omgdi:waypoint x="530" y="120" />
+        <omgdi:waypoint x="595" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1awqpgn_di" bpmnElement="Flow_1awqpgn">
+        <omgdi:waypoint x="645" y="120" />
+        <omgdi:waypoint x="750" y="120" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="683" y="102" width="34" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xucn2c_di" bpmnElement="Flow_1xucn2c">
+        <omgdi:waypoint x="850" y="230" />
+        <omgdi:waypoint x="950" y="230" />
+        <omgdi:waypoint x="950" y="145" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_031butv_di" bpmnElement="Flow_031butv">
+        <omgdi:waypoint x="850" y="120" />
+        <omgdi:waypoint x="925" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_095pd33_di" bpmnElement="Flow_095pd33">
+        <omgdi:waypoint x="975" y="120" />
+        <omgdi:waypoint x="1042" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00qpkl2_di" bpmnElement="Flow_00qpkl2">
+        <omgdi:waypoint x="620" y="145" />
+        <omgdi:waypoint x="620" y="230" />
+        <omgdi:waypoint x="750" y="230" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="649" y="203" width="42" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
